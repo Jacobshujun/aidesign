@@ -1,0 +1,91 @@
+{
+  "project": "aidesign",
+  "status_values": [
+    "not_started",
+    "in_progress",
+    "ready_for_review",
+    "done",
+    "blocked"
+  ],
+  "features": [
+    {
+      "id": "harness-project-structure",
+      "title": "Harness 工程结构初始化",
+      "status": "done",
+      "definition_of_done": [
+        "创建 AGENTS.md 和 docs/harness/ 事实源文件",
+        "创建 scripts/harness/ baseline 验证脚本",
+        "README 包含 Harness 恢复入口和 baseline 命令",
+        "baseline 验证通过并记录证据"
+      ],
+      "evidence": [
+        "2026-06-06: Created AGENTS.md, README.md, docs/harness/*, and scripts/harness/*.ps1.",
+        "2026-06-06: python3 JSON parse check passed for docs/harness/feature_list.json.",
+        "2026-06-06: rg confirmed all scripts/harness/*.ps1 contain $ErrorActionPreference = \"Stop\".",
+        "2026-06-06: Added Node.js Harness baseline scripts: scripts/harness/init.mjs, scripts/harness/handoff.mjs, scripts/harness/check.mjs.",
+        "2026-06-06: `node scripts/harness/check.mjs` passed with Harness init, handoff, and baseline checks."
+      ],
+      "notes": "Local macOS baseline uses Node.js because node v24.16.0 is installed and powershell/pwsh are not available. PowerShell scripts are retained for environments that provide PowerShell."
+    },
+    {
+      "id": "ai-provider-foundation",
+      "title": "大模型基础环境与服务端代理",
+      "status": "ready_for_review",
+      "definition_of_done": [
+        "模型端点、模型名称和 RunningHub WebApp ID 可通过环境变量替换",
+        "API key 不暴露到前端代码",
+        "前端通过本地服务端代理访问模型能力",
+        "baseline 和 HTTP smoke 通过"
+      ],
+      "evidence": [
+        "2026-06-06: Added .env.example and local .env.local template with blank API key fields.",
+        "2026-06-06: Added Node API proxy in server/index.mjs with text model and RunningHub provider modules.",
+        "2026-06-06: Added frontend provider status and /api/ai/recognize-scene call path in src/api.ts and src/App.tsx.",
+        "2026-06-06: `npm run build`, `npm run smoke`, and `node scripts/harness/check.mjs` passed.",
+        "2026-06-06: After restarting `npm run dev`, `/api/ai/config` reported both providers configured with local `.env.local` values and without exposing secrets.",
+        "2026-06-06: Provider status now treats placeholder API key values as unconfigured, matching request-time secret validation."
+      ],
+      "notes": "Ready for review as infrastructure. Actual API keys were not written into tracked files; fill .env.local locally before real model calls."
+    },
+    {
+      "id": "furniture-asset-library",
+      "title": "家具单品素材库",
+      "status": "ready_for_review",
+      "definition_of_done": [
+        "确认素材数据字段和状态流转",
+        "实现素材上传、列表、筛选和详情查看",
+        "有可运行验证覆盖核心素材库流程"
+      ],
+      "evidence": [
+        "2026-06-06: Implemented furniture asset types in src/types.ts and mock assets in src/data.ts.",
+        "2026-06-06: Implemented asset library filtering, grid selection, detail panel, and in-memory asset import in src/App.tsx.",
+        "2026-06-06: Furniture item import is separated from scene-image import, and uploaded furniture items enter the asset library as draft `待标注` assets.",
+        "2026-06-06: `npm run build` passed.",
+        "2026-06-06: `node scripts/harness/check.mjs` passed."
+      ],
+      "notes": "Ready for review as a front-end MVP. Not marked done because metadata editing workflow, persistence, and dedicated browser workflow tests are not complete."
+    },
+    {
+      "id": "scene-furniture-recognition-replacement",
+      "title": "场景图家具识别与替换",
+      "status": "ready_for_review",
+      "definition_of_done": [
+        "确认场景图上传、识别、选择、替换和导出流程",
+        "实现可操作的识别结果展示和替换素材选择",
+        "有可运行验证覆盖核心替换流程"
+      ],
+      "evidence": [
+        "2026-06-06: Implemented mock scene recognition objects in src/data.ts.",
+        "2026-06-06: Implemented scene upload, selectable detection boxes, candidate replacement selection, layer switching, and generated preview overlay in src/App.tsx.",
+        "2026-06-06: Added HTTP smoke script scripts/harness/http_smoke.mjs and `npm run smoke` passed against http://127.0.0.1:5173/.",
+        "2026-06-06: Added /api/ai/recognize-scene proxy route and frontend AI recognition action.",
+        "2026-06-06: Implemented in-memory scene history library and manual detection-box editing, including add, delete, label/category edits, and geometry edits.",
+        "2026-06-06: Implemented all-status replacement candidates, including `待标注` and `需抠图` assets, plus an in-memory per-scene replacement chain for continuous multi-item replacement.",
+        "2026-06-06: Converted the scene replacement workspace to an infinite canvas viewport in src/App.tsx and src/styles.css with pan, wheel/button zoom, fit/reset/focus controls, and direct detection-box drag/resize.",
+        "2026-06-06: `node scripts/harness/check.mjs` and `npm run smoke` passed after the infinite-canvas workspace conversion.",
+        "2026-06-06: `node scripts/harness/check.mjs` passed."
+      ],
+      "notes": "Ready for review as a front-end MVP plus AI proxy foundation. Scene history, detection edits, and replacement chains are browser-memory only. Not marked done because real recognition/replacement require configured keys, confirmed provider payload mapping, persistence, and dedicated browser workflow tests."
+    }
+  ]
+}
