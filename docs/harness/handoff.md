@@ -17,7 +17,7 @@ Read these files first:
 
 First Web MVP and AI provider foundation are implemented. Scene-image import and furniture-item import have been separated in the UI. The workspace now has an in-memory scene history library, manual detection-box editing, all-status replacement candidates, an in-memory per-scene replacement chain for continuous multi-item replacement, and an infinite-canvas-style scene viewport with pan/zoom plus direct detection-box drag/resize. The asset library imports furniture items as `待标注` draft assets, and `待标注` / `需抠图` assets are allowed to participate in generation. Local `.env.local` has been filled by the user, and the restarted dev server reports both providers configured. Provider status now treats placeholder API key values as unconfigured.
 
-The GitHub collaboration remote is `origin = https://github.com/Jacobshujun/aidesign.git`. It was confirmed empty before the initial local `main` branch sync.
+The GitHub collaboration remote is `origin = https://github.com/Jacobshujun/aidesign.git`. It was confirmed empty before the initial local `main` branch sync. Local commits are ready, but pushing is blocked until GitHub credentials are configured locally; HTTPS has no username credential, and SSH has no accepted public key.
 
 ## Resume Entry Point
 

@@ -32,6 +32,7 @@ First Web MVP is implemented. Current focus is reviewing the scene-image infinit
 - 2026-06-06: Implemented all-status replacement candidates, including `待标注` and `需抠图` assets, plus an in-memory per-scene replacement chain for continuous multi-item replacement.
 - 2026-06-06: Converted the scene replacement workspace to an infinite-canvas-style viewport with pan, wheel/button zoom, fit/reset/focus controls, and direct detection-box drag/resize.
 - 2026-06-07: Confirmed `https://github.com/Jacobshujun/aidesign.git` has no remote refs, initialized local Git on `main`, and configured `origin` for the first GitHub sync.
+- 2026-06-07: Created local commits for the initial project sync. `git push -u origin main` is blocked until GitHub credentials are configured locally; HTTPS has no username credential, and SSH has no accepted public key.
 
 ## Risks
 
@@ -44,6 +45,7 @@ First Web MVP is implemented. Current focus is reviewing the scene-image infinit
 - Product testing currently covers TypeScript/build and HTTP entrypoint smoke, but not browser interaction automation.
 - Deployment target is not confirmed.
 - PowerShell wrappers remain unverified locally because `powershell` and `pwsh` are not installed.
+- GitHub push currently requires local authentication setup before `origin/main` can be created.
 
 ## Verification Record
 
