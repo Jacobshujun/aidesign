@@ -21,7 +21,6 @@
 - The current macOS environment does not have `powershell` or `pwsh`; use `node scripts/harness/check.mjs` as the local baseline unless PowerShell is installed later.
 - Python Playwright is not installed in this environment; browser automation is not part of the current baseline.
 - `.env.local` is intentionally ignored and may contain local secrets. Do not copy it into docs or examples.
-- GitHub push is not authenticated in this environment yet. HTTPS push cannot read a username credential, and SSH push currently fails with `Permission denied (publickey)`.
 - The local Node API proxy reads `.env` and `.env.local` at startup; restart `npm run dev` after changing local environment variables.
 - Do not add placeholder `npm test`, `pytest`, or deployment checks before the corresponding files and commands exist.
 - Do not mark a feature `done` without evidence in `docs/harness/feature_list.json`.

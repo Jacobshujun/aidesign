@@ -16,7 +16,7 @@
 - 2026-06-06: `待标注` and `需抠图` furniture assets are allowed to participate in scene replacement generation, with status cues instead of blocking behavior.
 - 2026-06-06: A single scene can support a continuous multi-item replacement chain in the front-end MVP; the chain is currently browser-memory state.
 - 2026-06-06: The scene replacement workspace should use an infinite-canvas-style interaction surface for the front-end MVP, including pan/zoom controls and direct manipulation of detection boxes.
-- 2026-06-07: The Git collaboration remote is `origin = https://github.com/Jacobshujun/aidesign.git`, with local development starting from branch `main`.
+- 2026-06-07: The Git collaboration remote is `origin = git@github.com:Jacobshujun/aidesign.git`, with local development starting from branch `main`.
 
 ## Pending Decisions
 

@@ -80,6 +80,7 @@ It checks:
 - 2026-06-06: `node scripts/harness/check.mjs` passed after implementing all-status replacement candidates and the in-memory per-scene replacement chain.
 - 2026-06-06: `npm run smoke` passed against the already-running local dev server at `http://127.0.0.1:5173/` after replacement-chain implementation.
 - 2026-06-07: `node scripts/harness/check.mjs` passed while preparing the initial GitHub sync.
+- 2026-06-07: `node scripts/harness/check.mjs` passed after documenting completed GitHub SSH sync.
 
 ## Missing Coverage
 
